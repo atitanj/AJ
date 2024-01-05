@@ -1,0 +1,14 @@
+<h1>Atitan</h1>
+<h1>V2</h1>
+
+docker build -t ghcr.io/atitanj/aj:latest . 
+docker push  ghcr.io/atitanj/aj:latest  
+docker build -t ghcr.io/atitanj/aj:latest . 
+docker push  ghcr.io/atitanj/aj:latest    
+docker pull ghcr.io/sommaik/ssi-repo:latest
+docker image ls
+docker run --name web-4 -p 9084:80 -d ghcr.io/sommaik/ssi-repo
+docker tag ghcr.io/atitanj/aj ghcr.io/atitanj/aj:v1
+docker push ghcr.io/atitanj/aj:v1 
+docker build -t ghcr.io/atitanj/aj:v2 .
+docker push ghcr.io/atitanj/aj:v2   
