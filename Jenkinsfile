@@ -9,5 +9,11 @@ stages {
             sh "echo ${env.APP_NAME}"
         }
     }
+    stage('Build Stage (Docker)'){
+        agent {label 'build-server'}
+        step{
+            sh "docker build -t ghcr.io/atitanj/aj ."
+        }
+    }
 }    
 }
