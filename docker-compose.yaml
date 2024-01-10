@@ -1,0 +1,24 @@
+ # run ด้วยคำสัง docker compose up -d      เพื่อสร้าง services หรือเรียกว่า container ก็ได้
+version: '3'
+services:
+  mydb:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root1234
+      - MYSQL_DATABASE=test_db
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=12345678
+    volumes:
+      - ./data/mysql:/var/lib/msql
+  myweb:
+   image: phpmyadmin
+   environment:
+      - PMA_HOST=mydb
+   ports:
+      - 9093:80
+  myapp:
+   build:
+    context: .
+    dockerfile: Dockerfile
+   ports:
+    - 9094:80    
