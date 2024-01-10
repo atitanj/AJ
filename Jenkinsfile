@@ -11,7 +11,7 @@ stages {
     }
     stage('Build Stage (Docker)'){
         agent {label 'build-server'}
-        step{
+        steps {
             sh "docker build -t ghcr.io/atitanj/aj ."
         }
     }
