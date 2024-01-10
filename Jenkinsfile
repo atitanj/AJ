@@ -15,5 +15,20 @@ stages {
             sh "docker build -t ghcr.io/atitanj/aj ."
         }
     }
+    stage('Deliver Docker Image') {
+            agent {label 'build-server'}
+            steps {
+                withCredentials(
+                [usernamePassword(
+                    credentialsId: 'atitanj',
+                    passwordVariable: 'githubPassword',
+                    usernameVariable: 'githubUser'
+                )]
+            ){
+                sh "docker login ghcr.io -u ${env.githubUser} -p ${env.githubPassword}"
+                sh "docker push ghcr.io/atitanj/aj"
+            }
+            }
+        }
 }    
 }
