@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aj
+  name: user05-atitanj
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: aj
+      app: user05-atitanj
   template:
     metadata:
       labels:
-        app: aj
+        app: user05-atitanj
     spec:
       containers:
-        - name: aj-server
+        - name: user05-atitanj
           image: ghcr.io/atitanj/aj
           ports:
             - containerPort: 80
@@ -21,12 +21,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aj-service
+  name: user05-atitanj
   labels:
-    app: aj-service
+    app: user05-atitanj
 spec:
   selector:
-    app: aj
+    app: user05-atitanj
   ports:
    - name: web-port
      protocol: TCP
