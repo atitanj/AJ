@@ -38,7 +38,7 @@ stages {
     stage('Deploy Stage (K8s)') {
             agent {label 'deploy-server'}  
              steps {
-                sh "kubctl delete -f deploy-web.yml"
+                sh "kubectl delete -f deploy-web.yml"
                 sh "kubectl apply -f deploy-web.yml"
              } 
        }  
